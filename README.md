@@ -1,6 +1,6 @@
 # Event-Driven E-commerce Backend
 
-A **production-ready, Amazon-style microservices platform** demonstrating distributed systems patterns, event-driven architecture, and horizontal scaling.
+A **production-ready microservices platform** demonstrating distributed systems patterns, event-driven architecture, and horizontal scaling.
 
 > **Interview line**: "All state is in Postgres/Redis/Kafka; services are stateless so we can scale by adding instances."
 
@@ -181,7 +181,7 @@ CREATE TABLE products (
 );
 ```
 
-## Amazon-Style Scaling Patterns
+## Scaling Patterns
 
 ### 1. Stateless Services + Horizontal Scaling
 ```bash
@@ -229,7 +229,7 @@ WHERE sku_id = :sku AND available >= :qty;
 - **Optimized indexes**: `orders(user_id, created_at)`, `inventory(sku_id)`
 - **Redis caching**: Hot data with TTL
 
-### 6. Observability (Amazon SDE-Level)
+### 6. Observability (Production-Grade)
 
 #### Prometheus Metrics
 | Metric | Type | Labels | Purpose |
