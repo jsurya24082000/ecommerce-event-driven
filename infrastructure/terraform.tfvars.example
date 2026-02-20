@@ -1,0 +1,6 @@
+# Copy this file to terraform.tfvars and fill in the values
+
+aws_region   = "us-east-1"
+environment  = "production"
+project_name = "ecommerce-backend"
+db_password  = "your-secure-password-here"
