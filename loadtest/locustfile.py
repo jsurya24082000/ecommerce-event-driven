@@ -272,3 +272,22 @@ def on_test_stop(environment, **kwargs):
             print(f"  Failures: {entry.num_failures}")
             print(f"  Avg: {entry.avg_response_time:.2f}ms")
             print(f"  p95: {entry.get_response_time_percentile(0.95):.2f}ms")
+    
+    # Export JSON summary for README
+    summary = {
+        "total_requests": stats.total.num_requests,
+        "failed_requests": stats.total.num_failures,
+        "error_rate_percent": round((stats.total.num_failures / max(stats.total.num_requests, 1)) * 100, 2),
+        "rps": round(stats.total.total_rps, 2),
+        "latency": {
+            "avg_ms": round(stats.total.avg_response_time, 2),
+            "p50_ms": round(stats.total.get_response_time_percentile(0.50), 2),
+            "p95_ms": round(stats.total.get_response_time_percentile(0.95), 2),
+            "p99_ms": round(stats.total.get_response_time_percentile(0.99), 2),
+        }
+    }
+    
+    with open("results/locust_summary.json", "w") as f:
+        json.dump(summary, f, indent=2)
+    
+    print(f"\nSummary exported to results/locust_summary.json")
